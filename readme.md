@@ -4,7 +4,9 @@
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
 
 <p>Rx-Kotlin is an asynchronous programming library that is based on using observables. Observables are sequences of data or events that you can
- react to, such as data coming back from a web service, or even taps by the user. you can refer to the [marble diagrams](https://rxmarbles.com/#mapTo) for getting a better insight about Rx's event
+ react to, such as data coming back from a web service, or even taps by the user. you can refer to the 
+marble diagrams 
+for getting a better insight about Rx's event
 based programming. One thing that you should keep in your mind is that, everything is a sequence in Rx</p>
 
 <p>As an Android developer, you are no stranger to writing asynchronous and concurrent code in order to keep your app 
