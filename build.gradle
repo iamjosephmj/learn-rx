@@ -7,10 +7,12 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-    maven { url 'https://oss.jfrog.org/libs-snapshot' }
+    maven {
+        url 'https://jitpack.io'
+    }
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
-    compile 'io.reactivex.rxjava3:rxjava:3.0.0-SNAPSHOT'
+    implementation 'com.github.reactivex:rxkotlin:3.0.1'
 }

@@ -125,3 +125,159 @@ val fanFavByIterableAlternative = listOf(Season3, Season4, Season10).toObservabl
 ```
 </p>
 
+<strong>Creating Subscription</strong> [Ex2.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex3.kt)
+
+<p>
+Subscription is one of the prime idea behind generation of observables, there may be certain 
+actions that we need to do when an event is generated.
+
+A plain Subscription will look like
+
+```Kotlin
+val observable = Observable.just(Season1, Season2, Season3)
+
+observable.subscribe {
+    println(it)
+}
+```
+
+A Subscription doesn't always end up in happy path, there can be error states to, This 
+is how we do it.
+
+```Kotlin
+ val observable = Observable.just(Season1, Season2, Season3, Season6)
+
+observable.subscribeBy(
+    onNext = {
+        println(it)
+    },
+    onError = {
+        println(it)
+    },
+    onComplete = {
+        println("completed")
+    }
+)
+```
+the error methods throws a Throwable, now this has one more method named onCompleted. 
+The onCompleted method is for flagging the subscriber that the Observable had completed its 
+event emission and will no longer emit values.
+</p>
+<p>
+Now you had seen examples of how to emit observables, Sometimes you will want an 
+observable that emits no elements, just a completed event... That's Absurd!<br>
+We can do that by using .empty(). You have noticed that each observable comes with a type, as 
+we have .empty() with no elements, the compiler cannot infer the types. In this case, we can use unit.
+
+```Kotlin
+ val observable = Observable.empty<Unit>()
+
+        observable.subscribeBy(
+            onNext = {
+                println(it)
+            },
+            onError = {
+                println(it)
+            },
+            onComplete = {
+                println("completed")
+            }
+        )
+```
+</p>
+<p>
+As you can see the from the above example, there were no events generated. but you can 
+see a completed event. There is one way by which you can emit nothing using the never operator.
+
+```Kotlin
+    exampleOf("Never") {
+        val observable = Observable.never<Any>()
+
+        observable.subscribeBy(
+            onNext = {
+                println(it)
+            },
+            onError = {
+                println(it)
+            },
+            onComplete = {
+                println("completed")
+            }
+        )
+    }
+```
+</p>
+<p>
+Now, what does a subscription return -> Disposable
+
+if you want to cancel a subscription at a point of time, you can use .dispose()
+function.
+
+```Kotlin
+  val observable = Observable.never<Any>()
+
+        val sub = observable.subscribeBy(
+            onNext = {
+                println(it)
+            },
+            onError = {
+                println(it)
+            },
+            onComplete = {
+                println("completed")
+            }
+        )
+        
+        sub.dispose()
+```
+The key idea behind the observables are to avoid memory leaks.
+
+what if you have multiple disposable to be disposed, RxKotlin has a method to handle 
+this issue -- CompositeDisposable
+```Kotlin
+  val compositeDisposable = CompositeDisposable()
+
+        val observable1 = Observable.never<Any>()
+        val observable2 = Observable.never<Any>()
+        val observable3 = Observable.never<Any>()
+
+        compositeDisposable.add(observable1.subscribeBy(
+            onNext = {
+                println(it)
+            },
+            onError = {
+                println(it)
+            },
+            onComplete = {
+                println("completed")
+            }
+        ))
+        compositeDisposable.add(observable2.subscribeBy(
+            onNext = {
+                println(it)
+            },
+            onError = {
+                println(it)
+            },
+            onComplete = {
+                println("completed")
+            }
+        ))
+
+        compositeDisposable.add(observable3.subscribeBy(
+            onNext = {
+                println(it)
+            },
+            onError = {
+                println(it)
+            },
+            onComplete = {
+                println("completed")
+            }
+        ))
+
+        compositeDisposable.dispose()
+```
+
+</p>
+
