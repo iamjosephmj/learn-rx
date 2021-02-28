@@ -49,9 +49,7 @@ observable, there is an another way by which the observables can be terminated w
 
 <p>Now you have seen a glimpse what event based programming is. Now lets dive into the code</p>
 
-<strong>General idea of upstream and downstream</strong>
-
-- [Ex1.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex1.kt)
+<strong>General idea of upstream and downstream</strong> [Ex1.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex1.kt)
 
 ```Kotlin
   // Upstream
@@ -84,9 +82,7 @@ This will collect the event from the upstream and prints them.<br>
 Next up, it's time for you to roll up your sleeves and get some more hands on with bread and butter of RxKotlin
 </p>
 
-<strong>Creating Observable</strong>
-
-- [Ex2.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex2.kt)
+<strong>Creating Observable</strong> [Ex2.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex2.kt)
 
 <p>
 For explaining things in a much simpler manner, lets take the example of Game of thrones :).<br>
