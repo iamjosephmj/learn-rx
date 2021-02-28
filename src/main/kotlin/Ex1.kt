@@ -1,8 +1,11 @@
 import io.reactivex.rxjava3.core.Observable
+import util.exampleOf
 
 fun main(args: Array<String>) {
-    Observable.just("This is my first Rx App")
-        .subscribe {
-            print("Observed Result: \"$it\"")
-        }
+    exampleOf("General idea of upstream and downstream") {
+        Observable.just("This is my first Rx App")
+            .subscribe {
+                print("Observed Result: \"$it\"")
+            }
+    }
 }

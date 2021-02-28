@@ -49,22 +49,28 @@ observable, there is an another way by which the observables can be terminated w
 
 <p>Now you have seen a glimpse what event based programming is. Now lets dive into the code</p>
 
-<strong>General idea of upstream and downstream</strong> - [Ex1.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex1.kt)
+<strong>General idea of upstream and downstream</strong>
+
+- [Ex1.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex1.kt)
+
 ```Kotlin
   // Upstream
-   Observable.just("This is my first Rx App")
-  // Downstream 
-       .subscribe {
-            print("Observed Result: \"$it\"")
-        }
+Observable.just("This is my first Rx App")
+    // Downstream 
+    .subscribe {
+        print("Observed Result: \"$it\"")
+    }
 ```
+
 <p>This program consists of two parts:<br>
 1. Upstream<br>
 
 ```Kotlin
    Observable.just("This is my first Rx App")
 ```
-This part emits an event <b>"This is my first Rx App"</b> of type String. 
+
+This part emits an event <b>"This is my first Rx App"</b> of type String.<br>
+
 2. Downstream<br>
 
 ```Kotlin
@@ -75,6 +81,50 @@ This part emits an event <b>"This is my first Rx App"</b> of type String.
 
 This will collect the event from the upstream and prints them.<br>
 
-Next up, it's time for you to roll up your sleeves and get some more hands on with bread 
-and butter of RxKotlin 
+Next up, it's time for you to roll up your sleeves and get some more hands on with bread and butter of RxKotlin
 </p>
+
+<strong>Creating Observable</strong>
+
+- [Ex2.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex2.kt)
+
+<p>
+For explaining things in a much simpler manner, lets take the example of Game of thrones :).<br>
+
+1. Creating observable that generates single event with .just()
+
+```Kotlin
+val mostPopular: Observable<String> = Observable.just(Season1)
+```
+
+2. Creating observable that generates multiple events with .just()
+
+```Kotlin
+val fanFav: Observable<String> = Observable.just(Season3, Season4, Season10)
+```
+
+3. Creating observable that generates multiple events with .just() on a List
+
+```Kotlin        
+val fanFavByList = Observable.just(listOf(Season3, Season4, Season10))
+```
+
+4. Creating observable that generates multiple events with .fromIterable
+
+```Kotlin        
+/* 
+ * Note : the type of the fanFavByIterable will be Observable<String!>! , 
+ * dont get this confused with the above one. 
+*/
+
+val fanFavByIterable = Observable.fromIterable(listOf(Season3, Season4, Season10))
+```
+
+you can also do this with the help of extension functions that rx gives us on lists.
+
+```Kotlin        
+
+val fanFavByIterableAlternative = listOf(Season3, Season4, Season10).toObservable()
+```
+</p>
+
