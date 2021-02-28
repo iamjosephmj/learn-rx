@@ -68,7 +68,8 @@ Observable.just("This is my first Rx App")
 ```
 
 This part emits an event <b>"This is my first Rx App"</b> of type String.<br>
-
+</p>
+<p>
 2. Downstream<br>
 
 ```Kotlin
