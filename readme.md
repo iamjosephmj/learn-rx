@@ -405,7 +405,7 @@ added to PublishSubject before the subscription will not be received by the subs
         seasonBroadcast.onNext(Season10)
 
 ```
-<b>Behaviour Subject</b>
+<b>Behaviour Subject</b><br>
 Sometimes, you want the new subscribers to receive the most recent next event. 
 even if they subscribe after that event was originally emitted. For this we can use 
 BehaviourSubject. They start with an initial value, and they will replay the latest value 
@@ -441,7 +441,7 @@ to the new subscribers.They are <b>Stateful</b> (you can access the latest state
         compositeDisposable.add(sub2)
 ```
 
-<b>Replay</b>
+<b>Replay</b><br>
 What if you want to replay more than just one event other than the latest value... ReplaySubject comes to the rescue. 
 It starts empty, but is initialized with ab buffer size, It will replay upto that bufferSize to the new subscribers.
 We should not make the buffer size larger, because it will be held in the memory for the life of the subject.
