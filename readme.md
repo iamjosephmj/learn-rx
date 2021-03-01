@@ -349,6 +349,7 @@ There are some other reactive elements other than Observables, they are:
 <br>
 <br>
 <b>Creating a Single</b>
+   
 ```Kotlin
         val single = Single.create<String> { emitter ->
             emitter.onSuccess("Completed Successfully")
