@@ -287,8 +287,7 @@ compositeDisposable.dispose()
 
 </p>
 
-<strong>Using Create
-operator</strong> [Ex4.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex4.kt)
+<strong>Using Create operator</strong> [Ex4.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex4.kt)
 
 <p>
 we can use .create() operator for creating an observable
@@ -364,3 +363,104 @@ There are some other reactive elements other than Observables, they are:
 ```   
 </p>
 
+<strong>Subject and non ending sequences of streams</strong> [Ex5.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex5.kt)
+<p>
+Subjects are comprised of two parts :
+<br>
+1. <b>Observable</b> (just like that you have seen before)
+<br>
+2. <b>Observer</b> : This can receive new events, upon receiving new events it will be passed to the subscribers.
+<br>
+They are kind of like a Yin and Yang combination of Observable and Observer, This gives us capability of 
+working with observables that are not finite sequences. New elements can be added to the Subject at 
+runtime, and they will be emitted to Subscribers.
+</p>
+<p>
+There are 3 types of subjects that we use:
+<br>
+<b>1.Publish Subject</b><br>
+This starts as an empty sequence and emits only new next events to its subscribers. In other words, Elements 
+added to PublishSubject before the subscription will not be received by the subscriber.
+
+```Kotlin
+  val compositeDisposable = CompositeDisposable()
+        val seasonBroadcast = PublishSubject.create<String>()
+        seasonBroadcast.onNext(Season1)
+        seasonBroadcast.onNext(Season2)
+        val subscriber1 = seasonBroadcast.subscribeBy {
+            println("Subscription from subscriber 1 , data = $it")
+        }
+
+        compositeDisposable.add(subscriber1)
+
+        seasonBroadcast.onNext(Season3)
+        seasonBroadcast.onNext(Season4)
+        seasonBroadcast.onNext(Season5)
+        seasonBroadcast.onNext(Season6)
+        seasonBroadcast.onNext(Season7)
+        seasonBroadcast.onNext(Season8)
+        seasonBroadcast.onNext(Season9)
+        compositeDisposable.dispose()
+
+        seasonBroadcast.onNext(Season10)
+
+```
+<b>Behaviour Subject</b>
+Sometimes, you want the new subscribers to receive the most recent next event. 
+even if they subscribe after that event was originally emitted. For this we can use 
+BehaviourSubject. They start with an initial value, and they will replay the latest value 
+to the new subscribers.They are <b>Stateful</b> (you can access the latest state anytime)
+
+```Kotlin
+  val compositeDisposable = CompositeDisposable()
+
+        val sendBroadcast = BehaviorSubject.createDefault(Season1)
+
+        /*
+        *  You can access the behaviour subject value in the below way.
+        *  This can particularly be helpful in UI related stuff.
+         */
+        println("value of the Subject is :${sendBroadcast.value}")
+
+        val sub1 = sendBroadcast.subscribeBy(onNext = {
+            println(it)
+        }, onComplete = {
+            println("completed 1")
+        })
+
+        compositeDisposable.add(sub1)
+        compositeDisposable.clear()
+
+        sendBroadcast.onNext(Season2)
+        val sub2 = sendBroadcast.subscribeBy(onNext = {
+            println(it)
+        }, onComplete = {
+            println("completed 2")
+        })
+
+        compositeDisposable.add(sub2)
+```
+
+<b>Replay</b>
+What if you want to replay more than just one event other than the latest value... ReplaySubject comes to the rescue. 
+It starts empty, but is initialized with ab buffer size, It will replay upto that bufferSize to the new subscribers.
+We should not make the buffer size larger, because it will be held in the memory for the life of the subject.
+
+```Kotlin
+  val compositeDisposable = CompositeDisposable()
+
+        val subject = ReplaySubject.create<String>(2)
+
+        subject.onNext("event 1")
+        subject.onNext("event 2")
+
+        compositeDisposable.add(
+            subject.subscribeBy {
+                println(it)
+            }
+        )
+
+        subject.onNext("event 3")
+```
+
+</p>
