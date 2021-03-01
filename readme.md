@@ -49,7 +49,8 @@ observable, there is an another way by which the observables can be terminated w
 
 <p>Now you have seen a glimpse what event based programming is. Now lets dive into the code</p>
 
-<strong>General idea of upstream and downstream</strong> [Ex1.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex1.kt)
+<strong>General idea of upstream and
+downstream</strong> [Ex1.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex1.kt)
 
 ```Kotlin
   // Upstream
@@ -83,7 +84,8 @@ This will collect the event from the upstream and prints them.<br>
 Next up, it's time for you to roll up your sleeves and get some more hands on with bread and butter of RxKotlin
 </p>
 
-<strong>Creating Observable</strong> [Ex2.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex2.kt)
+<strong>Creating
+Observable</strong> [Ex2.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex2.kt)
 
 <p>
 For explaining things in a much simpler manner, lets take the example of Game of thrones :).<br>
@@ -123,9 +125,11 @@ you can also do this with the help of extension functions that rx gives us on li
 
 val fanFavByIterableAlternative = listOf(Season3, Season4, Season10).toObservable()
 ```
+
 </p>
 
-<strong>Creating Subscription</strong> [Ex2.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex3.kt)
+<strong>Creating
+Subscription</strong> [Ex3.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex3.kt)
 
 <p>
 Subscription is one of the prime idea behind generation of observables, there may be certain 
@@ -141,8 +145,7 @@ observable.subscribe {
 }
 ```
 
-A Subscription doesn't always end up in happy path, there can be error states to, This 
-is how we do it.
+A Subscription doesn't always end up in happy path, there can be error states to, This is how we do it.
 
 ```Kotlin
  val observable = Observable.just(Season1, Season2, Season3, Season6)
@@ -159,9 +162,9 @@ observable.subscribeBy(
     }
 )
 ```
-the error methods throws a Throwable, now this has one more method named onCompleted. 
-The onCompleted method is for flagging the subscriber that the Observable had completed its 
-event emission and will no longer emit values.
+
+the error methods throws a Throwable, now this has one more method named onCompleted. The onCompleted method is for
+flagging the subscriber that the Observable had completed its event emission and will no longer emit values.
 </p>
 <p>
 Now you had seen examples of how to emit observables, Sometimes you will want an 
@@ -172,18 +175,19 @@ we have .empty() with no elements, the compiler cannot infer the types. In this 
 ```Kotlin
  val observable = Observable.empty<Unit>()
 
-        observable.subscribeBy(
-            onNext = {
-                println(it)
-            },
-            onError = {
-                println(it)
-            },
-            onComplete = {
-                println("completed")
-            }
-        )
+observable.subscribeBy(
+    onNext = {
+        println(it)
+    },
+    onError = {
+        println(it)
+    },
+    onComplete = {
+        println("completed")
+    }
+)
 ```
+
 </p>
 <p>
 As you can see the from the above example, there were no events generated. but you can 
@@ -191,21 +195,22 @@ see a completed event. There is one way by which you can emit nothing using the 
 
 ```Kotlin
     exampleOf("Never") {
-        val observable = Observable.never<Any>()
+    val observable = Observable.never<Any>()
 
-        observable.subscribeBy(
-            onNext = {
-                println(it)
-            },
-            onError = {
-                println(it)
-            },
-            onComplete = {
-                println("completed")
-            }
-        )
-    }
+    observable.subscribeBy(
+        onNext = {
+            println(it)
+        },
+        onError = {
+            println(it)
+        },
+        onComplete = {
+            println("completed")
+        }
+    )
+}
 ```
+
 </p>
 <p>
 Now, what does a subscription return -> Disposable
@@ -216,68 +221,146 @@ function.
 ```Kotlin
   val observable = Observable.never<Any>()
 
-        val sub = observable.subscribeBy(
-            onNext = {
-                println(it)
-            },
-            onError = {
-                println(it)
-            },
-            onComplete = {
-                println("completed")
-            }
-        )
-        
-        sub.dispose()
+val sub = observable.subscribeBy(
+    onNext = {
+        println(it)
+    },
+    onError = {
+        println(it)
+    },
+    onComplete = {
+        println("completed")
+    }
+)
+
+sub.dispose()
 ```
+
 The key idea behind the observables are to avoid memory leaks.
 
-what if you have multiple disposable to be disposed, RxKotlin has a method to handle 
-this issue -- CompositeDisposable
+what if you have multiple disposable to be disposed, RxKotlin has a method to handle this issue -- CompositeDisposable
+
 ```Kotlin
   val compositeDisposable = CompositeDisposable()
 
-        val observable1 = Observable.never<Any>()
-        val observable2 = Observable.never<Any>()
-        val observable3 = Observable.never<Any>()
+val observable1 = Observable.never<Any>()
+val observable2 = Observable.never<Any>()
+val observable3 = Observable.never<Any>()
 
-        compositeDisposable.add(observable1.subscribeBy(
-            onNext = {
-                println(it)
-            },
-            onError = {
-                println(it)
-            },
-            onComplete = {
-                println("completed")
-            }
-        ))
-        compositeDisposable.add(observable2.subscribeBy(
-            onNext = {
-                println(it)
-            },
-            onError = {
-                println(it)
-            },
-            onComplete = {
-                println("completed")
-            }
-        ))
+compositeDisposable.add(observable1.subscribeBy(
+    onNext = {
+        println(it)
+    },
+    onError = {
+        println(it)
+    },
+    onComplete = {
+        println("completed")
+    }
+))
+compositeDisposable.add(observable2.subscribeBy(
+    onNext = {
+        println(it)
+    },
+    onError = {
+        println(it)
+    },
+    onComplete = {
+        println("completed")
+    }
+))
 
-        compositeDisposable.add(observable3.subscribeBy(
-            onNext = {
-                println(it)
-            },
-            onError = {
-                println(it)
-            },
-            onComplete = {
-                println("completed")
-            }
-        ))
+compositeDisposable.add(observable3.subscribeBy(
+    onNext = {
+        println(it)
+    },
+    onError = {
+        println(it)
+    },
+    onComplete = {
+        println("completed")
+    }
+))
 
-        compositeDisposable.dispose()
+compositeDisposable.dispose()
 ```
 
+</p>
+
+<strong>Using Create
+operator</strong> [Ex4.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex4.kt)
+
+<p>
+we can use .create() operator for creating an observable
+
+```Kotlin
+
+val observable = Observable.create<String> { emitter ->
+    // onNext() can be called any number of times.
+    emitter.onNext("Event 1")
+    emitter.onNext("Event 2")
+    emitter.onNext("Event 3")
+    emitter.onComplete()
+}
+observable.subscribeBy(
+    onNext = {
+        print(it)
+    },
+    onError = {
+
+    },
+    onComplete = {
+
+    }
+)
+
+
+//Error condition
+
+val observable = Observable.create<String> { emitter ->
+    emitter.onNext("Event 1")
+    emitter.onNext("Event 2")
+    // This will only be triggered once.
+    emitter.onError(Error.MyError())
+    emitter.onNext("Event 3")
+    emitter.onComplete()
+
+}
+observable.subscribeBy(
+    onNext = {
+        print(it)
+    },
+    onError = {
+        print(it)
+    },
+    onComplete = {
+
+    }
+)
+```
+
+There are some other reactive elements other than Observables, they are:
+<br>
+1. <b>Single</b> : Can emit one Error or one Completed event (you can see the implementation of single in combination with Retrofit)
+<br>   
+2. <b>Completable</b>: Can return one Error or one Completed event
+<br>
+3. <b>Maybe</b>: Can emit either one Next/Error/Completed event
+<br>
+<br>
+<b>Creating a Single</b>
+```Kotlin
+        val single = Single.create<String> { emitter ->
+            emitter.onSuccess("Completed Successfully")
+        }
+        single.subscribeBy(
+            onSuccess = {
+                println(it)
+            },
+            onError = {
+
+            }
+        )
+```   
 </p>
 
