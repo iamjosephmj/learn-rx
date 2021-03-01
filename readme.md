@@ -344,7 +344,6 @@ There are some other reactive elements other than Observables, they are:
 1. <b>Single</b> : Can emit one Error or one Completed event (you can see the implementation of single in combination with Retrofit)
 <br>   
 2. <b>Completable</b>: Can return one Error or one Completed event
-<br>
 3. <b>Maybe</b>: Can emit either one Next/Error/Completed event
 <br>
 <br>
