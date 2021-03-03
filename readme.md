@@ -479,7 +479,7 @@ observable in order to prepare it for subscribers.
 In a nutshell, this applies conditional constraints to next events to only pass through 
 to subscribers the elements you want. 
 
-Let's jump right in with [ignoreElements()](https://rxmarbles.com/#ignoreElements) <br>
+[ignoreElements()](https://rxmarbles.com/#ignoreElements) <br>
 As shown in the marble diagram, ignoreElements() will ignore next events. However, it will allow 
 through stop events, In other words Completed or Error events. Allowing through stop events are usually 
 implied in marble diagrams. We are just explicitly calling it out this time because 
