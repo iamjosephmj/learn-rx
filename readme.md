@@ -386,7 +386,7 @@ added to PublishSubject before the subscription will not be received by the subs
   val compositeDisposable = CompositeDisposable()
         val seasonBroadcast = PublishSubject.create<String>()
         seasonBroadcast.onNext(Season1)
-        seasonBroadcast.onNext(Season2)
+        seasonBroadcast.onNext(Se   ason2)
         val subscriber1 = seasonBroadcast.subscribeBy {
             println("Subscription from subscriber 1 , data = $it")
         }
@@ -464,3 +464,40 @@ We should not make the buffer size larger, because it will be held in the memory
 ```
 
 </p>
+
+<strong>Operators</strong> [Ex6.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex6.kt)
+<p>
+Operators are the building blocks of Rx, which you can use to filter, transform, process and react to events emitted by observables. You 
+can chain this operators to perform complex operations in a very succinct and understandable way when you go back review that 
+code later.
+
+we can start by looking into filtering operators, which allow you to process some events but ignore others.
+Then we will move on to transforming operators, which allow you to manipulate events and data that are emitted by an 
+observable in order to prepare it for subscribers. 
+
+<b>Filtering Operator</b><br>
+In a nutshell, this applies conditional constraints to next events to only pass through 
+to subscribers the elements you want. 
+
+Let's jump right in with [ignoreElements()](https://rxmarbles.com/#ignoreElements) <br>
+As shown in the marble diagram, ignoreElements() will ignore next events. However, it will allow 
+through stop events, In other words Completed or Error events. Allowing through stop events are usually 
+implied in marble diagrams. We are just explicitly calling it out this time because 
+that's all ignoreElements will let through.
+<br>
+
+[elementAt()](https://rxmarbles.com/#elementAt) <br>
+This will filter next events except the one at the specified index. This marble 
+diagram depicts using elementAt() to only return the 3rd next event element and ignore the rest.
+<br>
+[filter { }](https://rxmarbles.com/#filter) <br>
+RxKotlin also has a filter operator for observable sequence that works similarly to kotlin's 
+filter function for collections. It takes a predicate to apply to each element to determine 
+if the element should be allowed through or not. In this marble diagram it will allow to pass 
+the elements that are greater than 10 only.
+<br>
+
+
+
+</p>
+
