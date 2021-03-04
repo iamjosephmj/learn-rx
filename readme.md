@@ -13,7 +13,7 @@
 ## Table of contents
 
 * [Introduction](#Introduction)
-* [General idea about Observables](#General idea about Observables)
+* [General idea about Observables](#General-idea-about-Observables)
 
 ## Introduction
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
