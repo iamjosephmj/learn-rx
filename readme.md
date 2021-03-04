@@ -27,6 +27,7 @@
     * [Publish Subject](#Publish-Subject)
     * [Behaviour Subject](#Behaviour-Subject)
     * [Replay](#Replay)
+* [Operators](#Operators)
 ## Introduction
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
 <p>Rx-Kotlin is an asynchronous programming library that is based on using observables. Observables are sequences of data or events that you can
@@ -507,7 +508,8 @@ We should not make the buffer size larger, because it will be held in the memory
 
 </p>
 
-<strong>Operators</strong> [Ex6.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex6.kt)
+## Operators <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex6.kt">`Ex6.kt`</a>
+
 <p>
 Operators are the building blocks of Rx, which you can use to filter, transform, process and react to events emitted by observables. You 
 can chain this operators to perform complex operations in a very succinct and understandable way when you go back review that 
