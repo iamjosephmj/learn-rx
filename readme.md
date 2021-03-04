@@ -525,6 +525,7 @@ In a nutshell, this applies conditional constraints to next events to only pass 
 to subscribers the elements you want. 
 
 ### ignoreElements()
+![ignoreElements](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/ignore-elements.png)
 
 As shown in the marble diagram, ignoreElements() will ignore next events. However, it will allow 
 through stop events, In other words Completed or Error events. Allowing through stop events are usually 
