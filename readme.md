@@ -3,7 +3,9 @@
   <img src="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/rx-kotlin.png" />
 </p>
 
-<h1>Learn RX</h1>
+# Learn RX
+[![License MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)]()
+[![Public Yes](https://img.shields.io/badge/Public-yes-green.svg?style=flat)]()
 
 <p>Hey What's up everybody. I am Joseph James, In this project you can get a heads up to Rx-kotlin and use it in your Android Apps.
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
