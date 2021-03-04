@@ -15,7 +15,7 @@
 * [Introduction](#Introduction)
 * [General idea about Observables](#General-idea-about-Observables)
 * [Upstream and Downstream](#Upstream-and-Downstream)
-    * [Upstream](#1.-Upstream)
+    * [Upstream](#Upstream)
 
 ## Introduction
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
@@ -81,7 +81,7 @@ Observable.just("This is my first Rx App")
 <p>This program consists of two parts:<br>
 </p>
 
-#### 1. Upstream<br>
+#### Upstream
 
 <p>
 
