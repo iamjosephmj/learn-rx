@@ -498,7 +498,55 @@ if the element should be allowed through or not. In this marble diagram it will 
 the elements that are greater than 10 only.
 <br>
 
+[skip](https://rxmarbles.com/#skip) <br>
+This will skip the count of elements that you pass for its parameter and then allow all forthcoming elements through. 
+<br>
 
+[skipWhile](https://rxmarbles.com/#skipWhile) <br>
+This will apply a predicate and skip elements up until the predicate fails and then all future elements through. In other words, 
+it stops skipping once the predicate fails.
+<br>
 
+[take](https://rxmarbles.com/#take)
+This work in a way opposite to skip. Take will wait for it, take the count of elements up to and including the number you provided for 
+its parameter, then stop taking any additional elements.
+<br>
+
+[takeWhile](https://rxmarbles.com/#takeWhile)
+This will only take elements while a condition resolves to true and then stop taking any more elements.<br>
+note: it is different from filter operator. Once the condition is false, it stops taking any more elements.
+<br>
+
+However, so far, Filtering has been based on static conditions. There are also filtering operators that let you dynamically 
+filter elements based on some other Observables.
+<br>
+
+[skipUntil](https://rxmarbles.com/#skipUntil)
+This will skip an element until a second Observable triggers the skipUntil operator top stop skipping.
+<br>
+
+[takeUntil](https://rxmarbles.com/#takeUntil)
+This will keep taking elements until a second observable triggers it to stop taking.
+<br>
+
+[distinctUntilChanged](https://rxmarbles.com/#distinctUntilChanged)
+This operator prevents contiguous duplicate to get through, so the second one in this marble diagram gets through because 
+the previous element was different.
+<br>
+
+[distinct](https://rxmarbles.com/#distinct)
+This operator prevents duplicate elements to pass through
+<br>
+
+[debounceTime](https://rxmarbles.com/#debounceTime)
+Debouncing is something that we had heard while doing UI - button clicks. yes, this is the same thing! 
+This operator has 2 parameters, timeout and time unit. Timeout is the window for which the filtering will be blocked and will only take the last 
+element in the sequence. If you can take a look at the marble diagram, you can see that debounce time is 10, This first 
+element is passed in. then we have 2,3,4,5 that are in an overlapping duration if we consider a 10ms time window, bacause of this, 
+2,3,4 will be discarded and only 5 will be filtered in.
+<br>
+
+This covers the important operators for android use cases, there are a bit more self-explanatory operator implementations in 
+[Ex6.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex6.kt)
 </p>
 
