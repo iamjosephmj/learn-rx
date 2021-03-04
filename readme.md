@@ -18,6 +18,7 @@
     * [Upstream](#Upstream)
     * [Downstream](#Downstream)
 * [Creating Observable](#Creating-Observable-ex2kt)
+* [Creating Subscription](#Creating-Subscription-ex3kt)
 
 ## Introduction
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
@@ -151,8 +152,7 @@ val fanFavByIterableAlternative = listOf(Season3, Season4, Season10).toObservabl
 
 </p>
 
-<strong>Creating
-Subscription</strong> [Ex3.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex3.kt)
+## Creating Subscription <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex3.kt">`Ex3.kt`</a>
 
 <p>
 Subscription is one of the prime idea behind generation of observables, there may be certain 
