@@ -24,7 +24,9 @@
     * [Completable](#Completable)
     * [Maybe](#Maybe)     
 * [Subject and non ending sequences of streams](#Subject-and-non-ending-sequences-of-streams-ex5kt)
-
+    * [Publish Subject](#Publish-Subject)
+    * [Behaviour Subject](#Behaviour-Subject)
+    * [Replay](#Replay)
 ## Introduction
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
 <p>Rx-Kotlin is an asynchronous programming library that is based on using observables. Observables are sequences of data or events that you can
@@ -413,7 +415,9 @@ runtime, and they will be emitted to Subscribers.
 <p>
 There are 3 types of subjects that we use:
 <br>
-<b>1.Publish Subject</b><br>
+
+#### Publish Subject
+
 This starts as an empty sequence and emits only new next events to its subscribers. In other words, Elements 
 added to PublishSubject before the subscription will not be received by the subscriber.
 
@@ -440,7 +444,9 @@ added to PublishSubject before the subscription will not be received by the subs
         seasonBroadcast.onNext(Season10)
 
 ```
-<b>Behaviour Subject</b><br>
+
+#### Behaviour Subject
+
 Sometimes, you want the new subscribers to receive the most recent next event. 
 even if they subscribe after that event was originally emitted. For this we can use 
 BehaviourSubject. They start with an initial value, and they will replay the latest value 
@@ -476,7 +482,8 @@ to the new subscribers.They are <b>Stateful</b> (you can access the latest state
         compositeDisposable.add(sub2)
 ```
 
-<b>Replay</b><br>
+#### Replay
+
 What if you want to replay more than just one event other than the latest value... ReplaySubject comes to the rescue. 
 It starts empty, but is initialized with ab buffer size, It will replay upto that bufferSize to the new subscribers.
 We should not make the buffer size larger, because it will be held in the memory for the life of the subject.
