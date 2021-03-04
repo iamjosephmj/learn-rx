@@ -80,7 +80,7 @@ Observable.just("This is my first Rx App")
 <p>This program consists of two parts:<br>
 </p>
 
-### 1. Upstream<br>
+#### 1. Upstream<br>
 
 <p>
 
@@ -91,7 +91,7 @@ Observable.just("This is my first Rx App")
 This part emits an event <b>"This is my first Rx App"</b> of type String.<br>
 </p>
 
-### 2. Downstream<br>
+#### 2. Downstream<br>
 <p>
 
 ```Kotlin
