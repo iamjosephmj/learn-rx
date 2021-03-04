@@ -16,6 +16,8 @@
 * [General idea about Observables](#General-idea-about-Observables)
 * [Upstream and Downstream](#Upstream-and-Downstream)
     * [Upstream](#Upstream)
+    * [Downstream](#Downstream)
+* [Creating Observable](#Creating-Observable)
 
 ## Introduction
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
@@ -92,7 +94,8 @@ Observable.just("This is my first Rx App")
 This part emits an event <b>"This is my first Rx App"</b> of type String.<br>
 </p>
 
-#### 2. Downstream<br>
+#### Downstream
+
 <p>
 
 ```Kotlin
@@ -106,8 +109,7 @@ This will collect the event from the upstream and prints them.<br>
 Next up, it's time for you to roll up your sleeves and get some more hands on with bread and butter of RxKotlin
 </p>
 
-<strong>Creating
-Observable</strong> [Ex2.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex2.kt)
+## Creating Observable <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex2.kt">`Ex2.kt`</a>
 
 <p>
 For explaining things in a much simpler manner, lets take the example of Game of thrones :).<br>
