@@ -83,6 +83,7 @@ Observable.just("This is my first Rx App")
 ### 1. Upstream<br>
 
 <p>
+
 ```Kotlin
    Observable.just("This is my first Rx App")
 ```
