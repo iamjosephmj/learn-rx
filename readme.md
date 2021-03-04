@@ -23,7 +23,7 @@
     * [Single](#Single)
     * [Completable](#Completable)
     * [Maybe](#Maybe)     
-* [Subject and non ending sequences of streams](#Subject-and-non-ending-sequences-of-streams)
+* [Subject and non ending sequences of streams](#Subject-and-non-ending-sequences-of-streams-ex5kt)
 
 ## Introduction
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
