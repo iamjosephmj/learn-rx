@@ -20,6 +20,9 @@
 * [Creating Observable](#Creating-Observable-ex2kt)
 * [Creating Subscription](#Creating-Subscription-ex3kt)
 * [Using Create operator](#Using-Create-operator-ex4kt)
+    * [Single](#Single)
+    * [Completable](#Completable)
+    * [Maybe](#Maybe)
 
 ## Introduction
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
@@ -363,16 +366,22 @@ observable.subscribeBy(
 ```
 
 There are some other reactive elements other than Observables, they are:
-<br>
-1. <b>Single</b> : Can emit one Error or one Completed event (you can see the implementation of single in combination with Retrofit)
-<br>   
-2. <b>Completable</b>: Can return one Error or one Completed event
-3. <b>Maybe</b>: Can emit either one Next/Error/Completed event
-<br>
-<br>
-<b>Creating a Single</b>
-   
+</p>
+
+#### Single
+Can emit one Error or one Completed event (you can see the implementation of single in combination with Retrofit)
+
+#### Completable
+Can return one Error or one Completed event
+
+#### Maybe
+Can emit either one Next/Error/Completed event
+
+#### Creating a Single
+<p>
+
 ```Kotlin
+   
         val single = Single.create<String> { emitter ->
             emitter.onSuccess("Completed Successfully")
         }
