@@ -78,16 +78,20 @@ Observable.just("This is my first Rx App")
 ```
 
 <p>This program consists of two parts:<br>
-1. Upstream<br>
+</p>
 
+### 1. Upstream<br>
+
+<p>
 ```Kotlin
    Observable.just("This is my first Rx App")
 ```
 
 This part emits an event <b>"This is my first Rx App"</b> of type String.<br>
 </p>
+
+### 2. Downstream<br>
 <p>
-2. Downstream<br>
 
 ```Kotlin
    subscribe {
