@@ -22,7 +22,8 @@
 * [Using Create operator](#Using-Create-operator-ex4kt)
     * [Single](#Single)
     * [Completable](#Completable)
-    * [Maybe](#Maybe)
+    * [Maybe](#Maybe)     
+* [Subject and non ending sequences of streams](#Subject-and-non-ending-sequences-of-streams)
 
 ## Introduction
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
@@ -396,7 +397,8 @@ Can emit either one Next/Error/Completed event
 ```   
 </p>
 
-<strong>Subject and non ending sequences of streams</strong> [Ex5.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex5.kt)
+## Subject and non ending sequences of streams <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex5.kt">`Ex5.kt`</a>
+
 <p>
 Subjects are comprised of two parts :
 <br>
