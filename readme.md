@@ -19,6 +19,7 @@
     * [Downstream](#Downstream)
 * [Creating Observable](#Creating-Observable-ex2kt)
 * [Creating Subscription](#Creating-Subscription-ex3kt)
+* [Using Create operator](#Using-Create-operator-ex4kt)
 
 ## Introduction
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
@@ -310,7 +311,7 @@ compositeDisposable.dispose()
 
 </p>
 
-<strong>Using Create operator</strong> [Ex4.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex4.kt)
+## Using Create operator <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex4.kt">`Ex4.kt`</a>
 
 <p>
 we can use .create() operator for creating an observable
