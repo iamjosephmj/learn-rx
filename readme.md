@@ -416,7 +416,7 @@ runtime, and they will be emitted to Subscribers.
 There are 3 types of subjects that we use:
 <br>
 
-#### Publish Subject
+### Publish Subject
 
 This starts as an empty sequence and emits only new next events to its subscribers. In other words, Elements 
 added to PublishSubject before the subscription will not be received by the subscriber.
@@ -445,7 +445,7 @@ added to PublishSubject before the subscription will not be received by the subs
 
 ```
 
-#### Behaviour Subject
+### Behaviour Subject
 
 Sometimes, you want the new subscribers to receive the most recent next event. 
 even if they subscribe after that event was originally emitted. For this we can use 
@@ -482,7 +482,7 @@ to the new subscribers.They are <b>Stateful</b> (you can access the latest state
         compositeDisposable.add(sub2)
 ```
 
-#### Replay
+### Replay
 
 What if you want to replay more than just one event other than the latest value... ReplaySubject comes to the rescue. 
 It starts empty, but is initialized with ab buffer size, It will replay upto that bufferSize to the new subscribers.
