@@ -7,9 +7,15 @@
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)]()
 [![Public Yes](https://img.shields.io/badge/Public-yes-green.svg?style=flat)]()
 
+## Heads up
 <p>Hey What's up everybody. I am Joseph James, In this project you can get a heads up to Rx-kotlin and use it in your Android Apps.
-So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
 
+## Table of contents
+
+* [Introduction](#Introduction)
+
+## Introduction
+So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
 <p>Rx-Kotlin is an asynchronous programming library that is based on using observables. Observables are sequences of data or events that you can
  react to, such as data coming back from a web service, or even taps by the user. you can refer to the 
 marble diagrams for getting a better insight about Rx's event
