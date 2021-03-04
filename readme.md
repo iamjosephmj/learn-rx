@@ -555,17 +555,23 @@ the elements that are greater than 10 only.
 This will skip the count of elements that you pass for its parameter and then allow all forthcoming elements through. 
 <br>
 
-[skipWhile](https://rxmarbles.com/#skipWhile) <br>
+### skipWhile
+![skipWhile](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/skipWhile.png)
+
 This will apply a predicate and skip elements up until the predicate fails and then all future elements through. In other words, 
 it stops skipping once the predicate fails.
 <br>
 
-[take](https://rxmarbles.com/#take)
+### take
+![take](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/take.png)
+
 This work in a way opposite to skip. Take will wait for it, take the count of elements up to and including the number you provided for 
 its parameter, then stop taking any additional elements.
 <br>
 
-[takeWhile](https://rxmarbles.com/#takeWhile)
+### takeWhile
+![takeWhile](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/takeWhile.png)
+
 This will only take elements while a condition resolves to true and then stop taking any more elements.<br>
 note: it is different from filter operator. Once the condition is false, it stops taking any more elements.
 <br>
@@ -574,24 +580,34 @@ However, so far, Filtering has been based on static conditions. There are also f
 filter elements based on some other Observables.
 <br>
 
-[skipUntil](https://rxmarbles.com/#skipUntil)
+### skipUntil
+![skipUntil](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/skipUntil.png)
+
 This will skip an element until a second Observable triggers the skipUntil operator top stop skipping.
 <br>
 
-[takeUntil](https://rxmarbles.com/#takeUntil)
+### takeUntil
+![takeUntil](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/takeUntil.png)
+
 This will keep taking elements until a second observable triggers it to stop taking.
 <br>
 
-[distinctUntilChanged](https://rxmarbles.com/#distinctUntilChanged)
+### distinctUntilChanged
+![distinctUntilChanged](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/distinctUntilChanged.png)
+
 This operator prevents contiguous duplicate to get through, so the second one in this marble diagram gets through because 
 the previous element was different.
 <br>
 
-[distinct](https://rxmarbles.com/#distinct)
+### distinct
+![distinct](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/distinct.png)
+
 This operator prevents duplicate elements to pass through
 <br>
 
-[debounceTime](https://rxmarbles.com/#debounceTime)
+### debounceTime
+![debounceTime](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/debounceTime.png)
+
 Debouncing is something that we had heard while doing UI - button clicks. yes, this is the same thing! 
 This operator has 2 parameters, timeout and time unit. Timeout is the window for which the filtering will be blocked and will only take the last 
 element in the sequence. If you can take a look at the marble diagram, you can see that debounce time is 10, This first 
