@@ -27,7 +27,7 @@
     * [Publish Subject](#Publish-Subject)
     * [Behaviour Subject](#Behaviour-Subject)
     * [Replay](#Replay)
-* [Operators](#Operators)
+* [Operators](#Operators-ex6kt)
 ## Introduction
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
 <p>Rx-Kotlin is an asynchronous programming library that is based on using observables. Observables are sequences of data or events that you can
