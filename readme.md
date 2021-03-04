@@ -14,6 +14,7 @@
 
 * [Introduction](#Introduction)
 * [General idea about Observables](#General-idea-about-Observables)
+* [Upstream-and-downstream](#Upstream-and-downstream)
 
 ## Introduction
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
@@ -64,8 +65,7 @@ observable, there is an another way by which the observables can be terminated w
 
 <p>Now you have seen a glimpse what event based programming is. Now lets dive into the code</p>
 
-<strong>General idea of upstream and
-downstream</strong> [Ex1.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex1.kt)
+##Upstream and downstream [Ex1.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex1.kt)
 
 ```Kotlin
   // Upstream
