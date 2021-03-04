@@ -1,5 +1,7 @@
 
-<div style="text-align:center"><img src="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/rx-kotlin.png" /></div>
+<p align="center">
+  <img src="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/rx-kotlin.png" />
+</p>
 
 <h1>Learn RX</h1>
 
