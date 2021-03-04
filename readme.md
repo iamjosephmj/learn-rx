@@ -533,19 +533,25 @@ implied in marble diagrams. We are just explicitly calling it out this time beca
 that's all ignoreElements will let through.
 <br>
 
-[elementAt()](https://rxmarbles.com/#elementAt) <br>
+### elementAt() 
+![elementAt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/elementat.png)
+
 This will filter next events except the one at the specified index. This marble 
 diagram depicts using elementAt() to only return the 3rd next event element and ignore the rest.
 <br>
 
-[filter { }](https://rxmarbles.com/#filter) <br>
+### filter { }
+![filter { }](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/filter.png)
+
 RxKotlin also has a filter operator for observable sequence that works similarly to kotlin's 
 filter function for collections. It takes a predicate to apply to each element to determine 
 if the element should be allowed through or not. In this marble diagram it will allow to pass 
 the elements that are greater than 10 only.
 <br>
 
-[skip](https://rxmarbles.com/#skip) <br>
+### skip
+![skip](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/skip.png)
+
 This will skip the count of elements that you pass for its parameter and then allow all forthcoming elements through. 
 <br>
 
