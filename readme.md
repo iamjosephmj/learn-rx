@@ -13,6 +13,7 @@
 ## Table of contents
 
 * [Introduction](#Introduction)
+* [General idea about Observables](#General idea about Observables)
 
 ## Introduction
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
@@ -48,6 +49,7 @@ them in a reactive manner. The primary base type in Rx-Kotlin in <strong>Observa
 elements. Subscribers can react to each event emitted. Actually, an Observable doesn't emit anything unless it has at least one 
 Subscriber.</p>
 
+## General idea about Observables
 <p>Observables are Typed, we cannot have multiple types emitted but the same observable. Every time an emitter publishes a new element 
 the Subscribers will have an opportunity to do something with the emitted value or react to that event in some other way such as displaying errors(in Android perspective). Each will observable should be terminated 
 at some point which will make it stop emitting any more events. The above mentioned is the normal termination of an 
