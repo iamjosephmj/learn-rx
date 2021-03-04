@@ -65,7 +65,8 @@ observable, there is an another way by which the observables can be terminated w
 
 <p>Now you have seen a glimpse what event based programming is. Now lets dive into the code</p>
 
-## Upstream and Downstream <div style=";background:#4d4b46;border-radius: 3px;width:50px;padding:5px;text-align: center;"><a style="color:#b5b4b0" href="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex1.kt">ex1</a></div>
+## Upstream and Downstream 
+<div style=";background:#4d4b46;border-radius: 3px;width:50px;padding:5px;text-align: center;"><a style="color:#b5b4b0" href="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex1.kt">ex1</a></div>
 
 
 ```Kotlin
