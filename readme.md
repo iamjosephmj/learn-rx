@@ -631,7 +631,7 @@ This covers the important operators for android use cases, there are a bit more 
 <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex6.kt">`Ex6.kt`</a>
 </p>
 
-## Schedulers <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex7.kt">`Ex7.kt`</a>
+## Schedulers
 
 By default in Rx-Kotlin(Android), Observables and the operators work on the same thread as where the 
 subscription occurs, which is typically on the MainThread. Schedulers provide an abstraction for managing threads for changing that default behaviour.
