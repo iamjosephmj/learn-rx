@@ -106,25 +106,26 @@ Observable.just("This is my first Rx App")
 
 #### Upstream
 
-<p>
-
 ```Kotlin
+
    Observable.just("This is my first Rx App")
+
 ```
+
+<p>
 
 This part emits an event <b>"This is my first Rx App"</b> of type String.<br>
 </p>
 
 #### Downstream
-
-<p>
-
 ```Kotlin
+
    subscribe {
     print("Observed Result: \"$it\"")
 }
 ```
 
+<p>
 This will collect the event from the upstream and prints them.<br>
 
 Next up, it's time for you to roll up your sleeves and get some more hands on with bread and butter of RxKotlin
