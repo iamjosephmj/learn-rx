@@ -657,9 +657,12 @@ This will direct where an entire subscription is performed, regardless of where 
 To get a better understanding of Scheduler lets consider this marble diagram, so that it will help you visualize how 
 it works in a real life use-case
 <br>
+<br>
+<p align="center">
 
 ![schedulers](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/schedulers.png)
 
+</p>
 <br>
 I'm starting out on the main thread, which is represented by the topmost green timeline. 
 I'll call ObserveOn and specify purpleScheduler. Imagine that I am going to do some intensive work here. 
