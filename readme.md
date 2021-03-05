@@ -28,6 +28,18 @@
     * [Behaviour Subject](#Behaviour-Subject)
     * [Replay](#Replay)
 * [Operators](#Operators-ex6kt)
+    * [ignoreElements()](#ignoreElements())
+    * [elementAt()](#elementAt())
+    * [filter()](#filter())
+    * [skip()](#skip())
+    * [skipWhile()](#skipWhile())
+    * [take()](#take())
+    * [takeWhile()](#takeWhile())
+    * [skipUntil()](#skipUntil())
+    * [takeUntil()](#takeUntil())
+    * [distinctUntilChanged()](#distinctUntilChanged())
+    * [distinct()](#distinct())
+    * [debounceTime()](#debounceTime())
 
 ## Introduction
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
@@ -540,8 +552,8 @@ This will filter next events except the one at the specified index. This marble
 diagram depicts using elementAt() to only return the 3rd next event element and ignore the rest.
 <br>
 
-### filter { }
-![filter { }](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/filter.png)
+### filter()
+![filter](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/filter.png)
 
 RxKotlin also has a filter operator for observable sequence that works similarly to kotlin's 
 filter function for collections. It takes a predicate to apply to each element to determine 
@@ -549,27 +561,27 @@ if the element should be allowed through or not. In this marble diagram it will 
 the elements that are greater than 10 only.
 <br>
 
-### skip
+### skip()
 ![skip](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/skip.png)
 
 This will skip the count of elements that you pass for its parameter and then allow all forthcoming elements through. 
 <br>
 
-### skipWhile
+### skipWhile()
 ![skipWhile](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/skipWhile.png)
 
 This will apply a predicate and skip elements up until the predicate fails and then all future elements through. In other words, 
 it stops skipping once the predicate fails.
 <br>
 
-### take
+### take()
 ![take](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/take.png)
 
 This work in a way opposite to skip. Take will wait for it, take the count of elements up to and including the number you provided for 
 its parameter, then stop taking any additional elements.
 <br>
 
-### takeWhile
+### takeWhile()
 ![takeWhile](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/takeWhile.png)
 
 This will only take elements while a condition resolves to true and then stop taking any more elements.<br>
@@ -580,32 +592,32 @@ However, so far, Filtering has been based on static conditions. There are also f
 filter elements based on some other Observables.
 <br>
 
-### skipUntil
+### skipUntil()
 ![skipUntil](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/skipUntil.png)
 
 This will skip an element until a second Observable triggers the skipUntil operator top stop skipping.
 <br>
 
-### takeUntil
+### takeUntil()
 ![takeUntil](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/takeUntil.png)
 
 This will keep taking elements until a second observable triggers it to stop taking.
 <br>
 
-### distinctUntilChanged
+### distinctUntilChanged()
 ![distinctUntilChanged](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/distinctUntilChanged.png)
 
 This operator prevents contiguous duplicate to get through, so the second one in this marble diagram gets through because 
 the previous element was different.
 <br>
 
-### distinct
+### distinct()
 ![distinct](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/distinct.png)
 
 This operator prevents duplicate elements to pass through
 <br>
 
-### debounceTime
+### debounceTime()
 ![debounceTime](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/debounceTime.png)
 
 Debouncing is something that we had heard while doing UI - button clicks. yes, this is the same thing! 
@@ -615,7 +627,7 @@ element is passed in. then we have 2,3,4,5 that are in an overlapping duration i
 2,3,4 will be discarded and only 5 will be filtered in.
 <br>
 
-This covers the important operators for android use cases, there are a bit more self-explanatory operator implementations in 
-[Ex6.kt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex6.kt)
+This covers the important operators for android use cases, there are a bit more self-explanatory operator implementations in
+<a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex6.kt">`Ex6.kt`</a>
 </p>
 
