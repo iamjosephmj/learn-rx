@@ -40,6 +40,9 @@
     * [distinctUntilChanged()](#distinctUntilChanged)
     * [distinct()](#distinct)
     * [debounceTime()](#debounceTime)
+* [Schedulers](#Schedulers)
+  * [How to specify schedulers](#How-to-specify-schedulers)
+  
 
 ## Introduction
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
@@ -627,4 +630,41 @@ element is passed in. then we have 2,3,4,5 that are in an overlapping duration i
 This covers the important operators for android use cases, there are a bit more self-explanatory operator implementations in
 <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex6.kt">`Ex6.kt`</a>
 </p>
+
+## Schedulers <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex7.kt">`Ex7.kt`</a>
+
+By default in Rx-Kotlin(Android), Observables and the operators work on the same thread as where the 
+subscription occurs, which is typically on the MainThread. Schedulers provide an abstraction for managing threads for changing that default behaviour.
+A scheduler is a context where a process takes place.
+
+### Advantages
+
+* Abstract thread management.
+* Easy to use.
+
+### How to specify schedulers
+
+#### Observe On
+
+This directs where events are received after it is called. In a Chain of operators, what comes 
+after a call to ObserveOn will be performed on the Scheduler that is specified
+
+#### Subscribe On
+
+This will direct where an entire subscription is performed, regardless of where it is called.
+
+<br>
+To get a better understanding of Scheduler lets consider this marble diagram, so that it will help you visualize how 
+it works in a real life use-case
+<br>
+![schedulers](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/schedulers.png)
+<br>
+I'm starting out on the main thread, which is represented by the topmost green timeline. 
+I'll call ObserveOn and specify purpleScheduler. Imagine that I am going to do some intensive work here. 
+So I am specifying a background thread to receive the events on for a map operation, in this case. 
+Then I will call SubscribeOn and specify orangeScheduler. I am specifying where I want subscription to be created. 
+their handlers executed, and where they will be disposed of. By using the subscribeOn operator here, It 
+will direct subscriptions for the entire chain, so that means that I am no longer in the MainThread, it is going to be 
+the thread established by the orangeScheduler. I am still observing on the purpleScheduler, nothing's changed there. And finally 
+I'll use observeOn again to receive the transformed events from the map operation back on the mainThread. 
 
