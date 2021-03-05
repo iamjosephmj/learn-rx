@@ -682,7 +682,7 @@ it works in a real life use-case
 <img src="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/schedulers.png"/>
 </p>
 <br>
-I'm starting out on the main thread, which is represented by the topmost green timeline. 
+I'm starting out on the main thread, which is represented by the bottom green timeline. 
 I'll call ObserveOn and specify purpleScheduler. Imagine that I am going to do some intensive work here. 
 So I am specifying a background thread to receive the events on for a map operation, in this case. 
 Then I will call SubscribeOn and specify orangeScheduler. I am specifying where I want subscription to be created. 
