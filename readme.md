@@ -1,13 +1,14 @@
-
 <p align="center">
   <img src="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/rx-kotlin.png" />
 </p>
 
 # Learn RX
+
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)]()
 [![Public Yes](https://img.shields.io/badge/Public-yes-green.svg?style=flat)]()
 
 ## Heads up
+
 <p>Hey What's up everybody. I am Joseph James, In this project you can get a heads up to Rx-kotlin and use it in your Android Apps.
 
 ## Table of contents
@@ -22,7 +23,7 @@
 * [Using Create operator](#Using-Create-operator-ex4kt)
     * [Single](#Single)
     * [Completable](#Completable)
-    * [Maybe](#Maybe)     
+    * [Maybe](#Maybe)
 * [Subject and non ending sequences of streams](#Subject-and-non-ending-sequences-of-streams-ex5kt)
     * [Publish Subject](#Publish-Subject)
     * [Behaviour Subject](#Behaviour-Subject)
@@ -41,10 +42,10 @@
     * [distinct()](#distinct)
     * [debounceTime()](#debounceTime)
 * [Schedulers](#Schedulers)
-  * [How to specify schedulers](#How-to-specify-schedulers)
-  
+    * [How to specify schedulers](#How-to-specify-schedulers)
 
 ## Introduction
+
 So, What is Rx-Kotlin? Why would you want to use it in your project? </p>
 <p>Rx-Kotlin is an asynchronous programming library that is based on using observables. Observables are sequences of data or events that you can
  react to, such as data coming back from a web service, or even taps by the user. you can refer to the 
@@ -79,6 +80,7 @@ elements. Subscribers can react to each event emitted. Actually, an Observable d
 Subscriber.</p>
 
 ## General idea about Observables
+
 <p>Observables are Typed, we cannot have multiple types emitted but the same observable. Every time an emitter publishes a new element 
 the Subscribers will have an opportunity to do something with the emitted value or react to that event in some other way such as displaying errors(in Android perspective). Each will observable should be terminated 
 at some point which will make it stop emitting any more events. The above mentioned is the normal termination of an 
@@ -111,20 +113,23 @@ Observable.just("This is my first Rx App")
 
 ```Kotlin
 
-   Observable.just("This is my first Rx App")
+Observable.just("This is my first Rx App")
 
 ```
+
 <p>
 This part emits an event <b>"This is my first Rx App"</b> of type String.<br>
 </p>
 
 #### Downstream
+
 ```Kotlin
 
-   subscribe {
+subscribe {
     print("Observed Result: \"$it\"")
 }
 ```
+
 <p>
 This will collect the event from the upstream and prints them.<br>
 Next up, it's time for you to roll up your sleeves and get some more hands on with bread and butter of RxKotlin
@@ -386,31 +391,36 @@ There are some other reactive elements other than Observables, they are:
 </p>
 
 #### Single
+
 Can emit one Error or one Completed event (you can see the implementation of single in combination with Retrofit)
 
 #### Completable
+
 Can return one Error or one Completed event
 
 #### Maybe
+
 Can emit either one Next/Error/Completed event
 
 #### Creating a Single
+
 <p>
 
 ```Kotlin
-   
-        val single = Single.create<String> { emitter ->
-            emitter.onSuccess("Completed Successfully")
-        }
-        single.subscribeBy(
-            onSuccess = {
-                println(it)
-            },
-            onError = {
 
-            }
-        )
+val single = Single.create<String> { emitter ->
+    emitter.onSuccess("Completed Successfully")
+}
+single.subscribeBy(
+    onSuccess = {
+        println(it)
+    },
+    onError = {
+
+    }
+)
 ```   
+
 </p>
 
 ## Subject and non ending sequences of streams <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex5.kt">`Ex5.kt`</a>
@@ -432,91 +442,90 @@ There are 3 types of subjects that we use:
 
 ### Publish Subject
 
-This starts as an empty sequence and emits only new next events to its subscribers. In other words, Elements 
-added to PublishSubject before the subscription will not be received by the subscriber.
+This starts as an empty sequence and emits only new next events to its subscribers. In other words, Elements added to
+PublishSubject before the subscription will not be received by the subscriber.
 
 ```Kotlin
   val compositeDisposable = CompositeDisposable()
-        val seasonBroadcast = PublishSubject.create<String>()
-        seasonBroadcast.onNext(Season1)
-        seasonBroadcast.onNext(Se   ason2)
-        val subscriber1 = seasonBroadcast.subscribeBy {
-            println("Subscription from subscriber 1 , data = $it")
-        }
+val seasonBroadcast = PublishSubject.create<String>()
+seasonBroadcast.onNext(Season1)
+seasonBroadcast.onNext(Se ason2)
+val subscriber1 = seasonBroadcast.subscribeBy {
+    println("Subscription from subscriber 1 , data = $it")
+}
 
-        compositeDisposable.add(subscriber1)
+compositeDisposable.add(subscriber1)
 
-        seasonBroadcast.onNext(Season3)
-        seasonBroadcast.onNext(Season4)
-        seasonBroadcast.onNext(Season5)
-        seasonBroadcast.onNext(Season6)
-        seasonBroadcast.onNext(Season7)
-        seasonBroadcast.onNext(Season8)
-        seasonBroadcast.onNext(Season9)
-        compositeDisposable.dispose()
+seasonBroadcast.onNext(Season3)
+seasonBroadcast.onNext(Season4)
+seasonBroadcast.onNext(Season5)
+seasonBroadcast.onNext(Season6)
+seasonBroadcast.onNext(Season7)
+seasonBroadcast.onNext(Season8)
+seasonBroadcast.onNext(Season9)
+compositeDisposable.dispose()
 
-        seasonBroadcast.onNext(Season10)
+seasonBroadcast.onNext(Season10)
 
 ```
 
 ### Behaviour Subject
 
-Sometimes, you want the new subscribers to receive the most recent next event. 
-even if they subscribe after that event was originally emitted. For this we can use 
-BehaviourSubject. They start with an initial value, and they will replay the latest value 
-to the new subscribers.They are <b>Stateful</b> (you can access the latest state anytime)
+Sometimes, you want the new subscribers to receive the most recent next event. even if they subscribe after that event
+was originally emitted. For this we can use BehaviourSubject. They start with an initial value, and they will replay the
+latest value to the new subscribers.They are <b>Stateful</b> (you can access the latest state anytime)
 
 ```Kotlin
   val compositeDisposable = CompositeDisposable()
 
-        val sendBroadcast = BehaviorSubject.createDefault(Season1)
+val sendBroadcast = BehaviorSubject.createDefault(Season1)
 
-        /*
-        *  You can access the behaviour subject value in the below way.
-        *  This can particularly be helpful in UI related stuff.
-         */
-        println("value of the Subject is :${sendBroadcast.value}")
+/*
+*  You can access the behaviour subject value in the below way.
+*  This can particularly be helpful in UI related stuff.
+ */
+println("value of the Subject is :${sendBroadcast.value}")
 
-        val sub1 = sendBroadcast.subscribeBy(onNext = {
-            println(it)
-        }, onComplete = {
-            println("completed 1")
-        })
+val sub1 = sendBroadcast.subscribeBy(onNext = {
+    println(it)
+}, onComplete = {
+    println("completed 1")
+})
 
-        compositeDisposable.add(sub1)
-        compositeDisposable.clear()
+compositeDisposable.add(sub1)
+compositeDisposable.clear()
 
-        sendBroadcast.onNext(Season2)
-        val sub2 = sendBroadcast.subscribeBy(onNext = {
-            println(it)
-        }, onComplete = {
-            println("completed 2")
-        })
+sendBroadcast.onNext(Season2)
+val sub2 = sendBroadcast.subscribeBy(onNext = {
+    println(it)
+}, onComplete = {
+    println("completed 2")
+})
 
-        compositeDisposable.add(sub2)
+compositeDisposable.add(sub2)
 ```
 
 ### Replay
 
-What if you want to replay more than just one event other than the latest value... ReplaySubject comes to the rescue. 
-It starts empty, but is initialized with ab buffer size, It will replay upto that bufferSize to the new subscribers.
-We should not make the buffer size larger, because it will be held in the memory for the life of the subject.
+What if you want to replay more than just one event other than the latest value... ReplaySubject comes to the rescue. It
+starts empty, but is initialized with ab buffer size, It will replay upto that bufferSize to the new subscribers. We
+should not make the buffer size larger, because it will be held in the memory for the life of the subject.
 
 ```Kotlin
   val compositeDisposable = CompositeDisposable()
 
-        val subject = ReplaySubject.create<String>(2)
+val subject = ReplaySubject.create<String>(2)
 
-        subject.onNext("event 1")
-        subject.onNext("event 2")
+subject.onNext("event 1")
+subject.onNext("event 2")
 
-        compositeDisposable.add(
-            subject.subscribeBy {
-                println(it)
-            }
-        )
+compositeDisposable.add(
+    subject.subscribeBy {
+        println(it)
+    }
+)
 
-        subject.onNext("event 3")
+subject.onNext("event 3")
 ```
 
 </p>
@@ -528,114 +537,125 @@ Operators are the building blocks of Rx, which you can use to filter, transform,
 can chain this operators to perform complex operations in a very succinct and understandable way when you go back review that 
 code later.
 
-we can start by looking into filtering operators, which allow you to process some events but ignore others.
-Then we will move on to transforming operators, which allow you to manipulate events and data that are emitted by an 
-observable in order to prepare it for subscribers. 
+we can start by looking into filtering operators, which allow you to process some events but ignore others. Then we will
+move on to transforming operators, which allow you to manipulate events and data that are emitted by an observable in
+order to prepare it for subscribers.
 
 <b>Filtering Operator</b><br>
-In a nutshell, this applies conditional constraints to next events to only pass through 
-to subscribers the elements you want. 
+In a nutshell, this applies conditional constraints to next events to only pass through to subscribers the elements you
+want.
 
 ### ignoreElements()
+
 ![ignoreElements](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/ignore-elements.png)
 
-As shown in the marble diagram, ignoreElements() will ignore next events. However, it will allow 
-through stop events, In other words Completed or Error events. Allowing through stop events are usually 
-implied in marble diagrams. We are just explicitly calling it out this time because 
-that's all ignoreElements will let through.
+As shown in the marble diagram, ignoreElements() will ignore next events. However, it will allow through stop events, In
+other words Completed or Error events. Allowing through stop events are usually implied in marble diagrams. We are just
+explicitly calling it out this time because that's all ignoreElements will let through.
 <br>
 
-### elementAt() 
+### elementAt()
+
 ![elementAt](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/elementat.png)
 
-This will filter next events except the one at the specified index. This marble 
-diagram depicts using elementAt() to only return the 3rd next event element and ignore the rest.
+This will filter next events except the one at the specified index. This marble diagram depicts using elementAt() to
+only return the 3rd next event element and ignore the rest.
 <br>
 
 ### filter()
+
 ![filter](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/filter.png)
 
-RxKotlin also has a filter operator for observable sequence that works similarly to kotlin's 
-filter function for collections. It takes a predicate to apply to each element to determine 
-if the element should be allowed through or not. In this marble diagram it will allow to pass 
-the elements that are greater than 10 only.
+RxKotlin also has a filter operator for observable sequence that works similarly to kotlin's filter function for
+collections. It takes a predicate to apply to each element to determine if the element should be allowed through or not.
+In this marble diagram it will allow to pass the elements that are greater than 10 only.
 <br>
 
 ### skip()
+
 ![skip](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/skip.png)
 
-This will skip the count of elements that you pass for its parameter and then allow all forthcoming elements through. 
+This will skip the count of elements that you pass for its parameter and then allow all forthcoming elements through.
 <br>
 
 ### skipWhile()
+
 ![skipWhile](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/skipWhile.png)
 
-This will apply a predicate and skip elements up until the predicate fails and then all future elements through. In other words, 
-it stops skipping once the predicate fails.
+This will apply a predicate and skip elements up until the predicate fails and then all future elements through. In
+other words, it stops skipping once the predicate fails.
 <br>
 
 ### take()
+
 ![take](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/take.png)
 
-This work in a way opposite to skip. Take will wait for it, take the count of elements up to and including the number you provided for 
-its parameter, then stop taking any additional elements.
+This work in a way opposite to skip. Take will wait for it, take the count of elements up to and including the number
+you provided for its parameter, then stop taking any additional elements.
 <br>
 
 ### takeWhile()
+
 ![takeWhile](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/takeWhile.png)
 
 This will only take elements while a condition resolves to true and then stop taking any more elements.<br>
 note: it is different from filter operator. Once the condition is false, it stops taking any more elements.
 <br>
 
-However, so far, Filtering has been based on static conditions. There are also filtering operators that let you dynamically 
-filter elements based on some other Observables.
+However, so far, Filtering has been based on static conditions. There are also filtering operators that let you
+dynamically filter elements based on some other Observables.
 <br>
 
 ### skipUntil()
+
 ![skipUntil](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/skipUntil.png)
 
 This will skip an element until a second Observable triggers the skipUntil operator top stop skipping.
 <br>
 
 ### takeUntil()
+
 ![takeUntil](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/takeUntil.png)
 
 This will keep taking elements until a second observable triggers it to stop taking.
 <br>
 
 ### distinctUntilChanged()
+
 ![distinctUntilChanged](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/distinctUntilChanged.png)
 
-This operator prevents contiguous duplicate to get through, so the second one in this marble diagram gets through because 
-the previous element was different.
+This operator prevents contiguous duplicate to get through, so the second one in this marble diagram gets through
+because the previous element was different.
 <br>
 
 ### distinct()
+
 ![distinct](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/distinct.png)
 
 This operator prevents duplicate elements to pass through
 <br>
 
 ### debounceTime()
+
 ![debounceTime](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/debounceTime.png)
 
-Debouncing is something that we had heard while doing UI - button clicks. yes, this is the same thing! 
-This operator has 2 parameters, timeout and time unit. Timeout is the window for which the filtering will be blocked and will only take the last 
-element in the sequence. If you can take a look at the marble diagram, you can see that debounce time is 10, This first 
-element is passed in. then we have 2,3,4,5 that are in an overlapping duration if we consider a 10ms time window, bacause of this, 
-2,3,4 will be discarded and only 5 will be filtered in.
+Debouncing is something that we had heard while doing UI - button clicks. yes, this is the same thing!
+This operator has 2 parameters, timeout and time unit. Timeout is the window for which the filtering will be blocked and
+will only take the last element in the sequence. If you can take a look at the marble diagram, you can see that debounce
+time is 10, This first element is passed in. then we have 2,3,4,5 that are in an overlapping duration if we consider a
+10ms time window, bacause of this, 2,3,4 will be discarded and only 5 will be filtered in.
 <br>
 
-This covers the important operators for android use cases, there are a bit more self-explanatory operator implementations in
+This covers the important operators for android use cases, there are a bit more self-explanatory operator
+implementations in
 <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex6.kt">`Ex6.kt`</a>
 </p>
 
 ## Schedulers
 
-By default in Rx-Kotlin(Android), Observables and the operators work on the same thread as where the 
-subscription occurs, which is typically on the MainThread. Schedulers provide an abstraction for managing threads for changing that default behaviour.
-A scheduler is a context where a process takes place.
+By default in Rx-Kotlin(Android), Observables and the operators work on the same thread as where the subscription
+occurs, which is typically on the MainThread. Schedulers provide an abstraction for managing threads for changing that
+default behaviour. A scheduler is a context where a process takes place.
 
 ### Advantages
 
@@ -646,8 +666,8 @@ A scheduler is a context where a process takes place.
 
 #### Observe On
 
-This directs where events are received after it is called. In a Chain of operators, what comes 
-after a call to ObserveOn will be performed on the Scheduler that is specified
+This directs where events are received after it is called. In a Chain of operators, what comes after a call to ObserveOn
+will be performed on the Scheduler that is specified
 
 #### Subscribe On
 
@@ -659,9 +679,7 @@ it works in a real life use-case
 <br>
 <br>
 <p align="center">
-
-![schedulers](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/schedulers.png)
-
+<img src="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/schedulers.png"/>
 </p>
 <br>
 I'm starting out on the main thread, which is represented by the topmost green timeline. 
