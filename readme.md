@@ -651,6 +651,10 @@ implementations in
 <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex6.kt">`Ex6.kt`</a>
 </p>
 
+### share()
+
+This operator helps us to share an observable amoung multiple subscribers.
+
 ## Schedulers
 
 By default in Rx-Kotlin(Android), Observables and the operators work on the same thread as where the subscription
