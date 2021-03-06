@@ -41,6 +41,7 @@
     * [distinctUntilChanged()](#distinctUntilChanged)
     * [distinct()](#distinct)
     * [debounceTime()](#debounceTime)
+    * [share()](#share)
 * [Schedulers](#Schedulers)
     * [How to specify schedulers](#How-to-specify-schedulers)
 
