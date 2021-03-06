@@ -28,7 +28,7 @@
     * [Publish Subject](#Publish-Subject)
     * [Behaviour Subject](#Behaviour-Subject)
     * [Replay](#Replay)
-* [Operators](#Operators-ex6kt)
+* [Operators (Filtering Observables)](#Operators-ex6kt)
     * [ignoreElements()](#ignoreElements)
     * [elementAt()](#elementAt)
     * [filter()](#filter)
