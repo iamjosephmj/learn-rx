@@ -647,14 +647,16 @@ time is 10, This first element is passed in. then we have 2,3,4,5 that are in an
 10ms time window, bacause of this, 2,3,4 will be discarded and only 5 will be filtered in.
 <br>
 
+### share()
+
+This operator helps us to share an observable among multiple subscribers.
+
+<br>
+
 This covers the important operators for android use cases, there are a bit more self-explanatory operator
 implementations in
 <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex6.kt">`Ex6.kt`</a>
 </p>
-
-### share()
-
-This operator helps us to share an observable among multiple subscribers.
 
 ## Schedulers
 
