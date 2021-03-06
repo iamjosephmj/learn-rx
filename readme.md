@@ -653,7 +653,7 @@ implementations in
 
 ### share()
 
-This operator helps us to share an observable amoung multiple subscribers.
+This operator helps us to share an observable among multiple subscribers.
 
 ## Schedulers
 
