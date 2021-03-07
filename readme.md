@@ -15,7 +15,7 @@
 
 * [Introduction](#Introduction)
 * [General idea about Observables](#General-idea-about-Observables)
-* [Upstream and Downstream](#Upstream-and-Downstream)
+* [Upstream and Downstream](#upstream-and-downstream-ex1kt)
     * [Upstream](#Upstream)
     * [Downstream](#Downstream)
 * [Creating Observable](#Creating-Observable-ex2kt)
@@ -44,7 +44,7 @@
     * [share()](#share)
 * [Schedulers](#Schedulers)
     * [How to specify schedulers](#How-to-specify-schedulers)
-* [Transforming Operators](#Transforming-Operators)
+* [Transforming Operators](#transforming-operators-ex7kt)
     * [Map](#Map)
     * [Flat Map](#FlatMap)
     * [Switch Map](#SwitchMap)
@@ -721,7 +721,7 @@ seem complex at first, but they are very easy to understand... lets dive in...
 
 ### FlatMap
 
-![FlatMap](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/flatMap.png)
+![flatMap](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/flatmap.png)
 
 let's walk through the marble diagram. The easiest way to follow what's happening in this 
 marble diagram is to take each path from the source observable, the top line, all the way to the target 
