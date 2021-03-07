@@ -28,7 +28,7 @@
     * [Publish Subject](#Publish-Subject)
     * [Behaviour Subject](#Behaviour-Subject)
     * [Replay](#Replay)
-* [Operators (Filtering Observables)](#Operators-ex6kt)
+* [Filtering Operators](#Operators-ex6kt)
     * [ignoreElements()](#ignoreElements)
     * [elementAt()](#elementAt)
     * [filter()](#filter)
@@ -44,6 +44,11 @@
     * [share()](#share)
 * [Schedulers](#Schedulers)
     * [How to specify schedulers](#How-to-specify-schedulers)
+* [Transforming Operators](#Transforming-Operators)
+    * [Map](#Map)
+    * [Flat Map](#FlatMap)
+    * [Switch Map](#SwitchMap)
+  
 
 ## Introduction
 
@@ -697,4 +702,56 @@ their handlers executed, and where they will be disposed of. By using the subscr
 will direct subscriptions for the entire chain, so that means that I am no longer in the MainThread, it is going to be 
 the thread established by the orangeScheduler. I am still observing on the purpleScheduler, nothing's changed there. And finally 
 I'll use observeOn again to receive the transformed events from the map operation back on the mainThread. 
+
+## Transforming Operators <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex7.kt">`Ex7.kt`</a>
+
+You have already established the foundation of your RxKotlin skyscraper of skills and have added the first floor in learning about filtering operators. 
+Let's keep building upward. You will use transforming operator all the time to prep data coming from an observable. There are parallels between transforming operator in RxKotlin and 
+the kotlin standard library, such as map and flatMap.
+
+### Map
+RxKotlin's Map operator works just like kotlin's standard map, except it operates on an observable sequences instead of a normal collection. 
+
+![Map](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/map.png)
+
+In the marble diagram, map takes a lambda that multiples each element by 10. see the coding example in <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex7.kt">`Ex7.kt`</a> for getting more insights.<br>
+
+Now let's venture into a something bit more elusive at first. Before I show the marble diagram let me just say that some of these operators have elicited more than their fair share of questions, and groans and moans from newcomers to RxKotlin. They may 
+seem complex at first, but they are very easy to understand... lets dive in... 
+
+### FlatMap
+
+![FlatMap](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/flatMap.png)
+
+let's walk through the marble diagram. The easiest way to follow what's happening in this 
+marble diagram is to take each path from the source observable, the top line, all the way to the target 
+observable that will deliver elements to the subscriber, the bottom line. 
+the source observable is of type "O" that has a value property that itself is an observable 
+of type Int. It's value property's initial value is the number of the object ie. O1 -> 1 , O2 -> 2 and 
+O3 -> 3. Starting with O1, flatmap receives object and reaches into access it's value property 
+and multiply it by 10. It the projects the transformed elements from O1 into new Observable. The first one 
+below flatmap just for O1, and that Observable is flattened down to the target observable that will 
+deliver elements to the subscriber, the bottom line. <br>
+
+This is the general principle of flatMap<br>
+
+`Observable -> Transform -> Project -> Falttened to a target observable`
+
+### SwitchMap
+
+It is similar to flatmap, but it only produces value from most recent Observable sequence. 
+SwitchMap is actually a combination of two operators, map and switch. Here is switch map's marble diagram.
+
+![switchMap](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/switchMap.png)
+
+O1 is received by switchMap. It transforms its value to 10, projects it onto a new Observable for O1, and 
+flattens it down to the target observable, just like before. But, then switchMap receives O2 and it does its thing, switching to O2 observable 
+because it is now the latest... and so on... The result is that the target observable 
+only receives element from the latest observable.
+
+
+
+
+
+
 
