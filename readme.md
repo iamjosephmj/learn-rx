@@ -765,17 +765,17 @@ accomplish by combining observables.
 StartWith() prepends a sequence of values onto an observable that subscribes are 
 guaranteed to receive first before any other elements.
 
-### contact()
+### combine()
 
-![contact](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/contact.png)
+![combine](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/concat.png)
 
 It turns out that the startWith is actually just a simplified variant of the contact operator. 
 Concat joins two observables together and combines their elements in the order the 
 observables are specified. 
 
-### contactWith()
+### combineWith()
 
-![contactWith](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/contact.png)
+![combineWith](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/concat.png)
 
 This is similar to concat, but the only difference is that concatWith waits for the first observable to complete to start 
 emitting the second one.
