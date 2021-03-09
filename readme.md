@@ -48,7 +48,11 @@
     * [Map](#Map)
     * [Flat Map](#FlatMap)
     * [Switch Map](#SwitchMap)
-  
+* [Combining Operators](#Combining-operators-ex8kt)
+    * [startWith](#startWith)
+    * [combine](#combine)
+    * [combineWith](#combineWith)
+    * [merge](#merge)
 
 ## Introduction
 
@@ -748,6 +752,45 @@ O1 is received by switchMap. It transforms its value to 10, projects it onto a n
 flattens it down to the target observable, just like before. But, then switchMap receives O2 and it does its thing, switching to O2 observable 
 because it is now the latest... and so on... The result is that the target observable 
 only receives element from the latest observable.
+
+## Combining Operators <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex8.kt">`Ex8.kt`</a>
+
+RxKotlin is about working with asynchronous sequences, which will often make order out of chaos. There is a lot you can 
+accomplish by combining observables.
+
+### StartWith()
+
+![startWith](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/startWith.png)
+
+StartWith() prepends a sequence of values onto an observable that subscribes are 
+guaranteed to receive first before any other elements.
+
+### contact()
+
+![contact](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/contact.png)
+
+It turns out that the startWith is actually just a simplified variant of the contact operator. 
+Concat joins two observables together and combines their elements in the order the 
+observables are specified. 
+
+### contactWith()
+
+![contactWith](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/contact.png)
+
+This is similar to concat, but the only difference is that concatWith waits for the first observable to complete to start 
+emitting the second one.
+
+### merge()
+
+![merge](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/merge.png)
+
+Merge will do as it says, interspersing elements from the combined observables as their 
+elements are emitted. Like with concat there is a merge with instance method.
+
+
+
+
+
 
 
 
