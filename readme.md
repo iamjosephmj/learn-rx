@@ -53,6 +53,7 @@
     * [combine](#combine)
     * [combineWith](#combineWith)
     * [merge](#merge)
+    * [combineLatest](#combineLatest)
 
 ## Introduction
 
@@ -709,33 +710,37 @@ I'll use observeOn again to receive the transformed events from the map operatio
 
 ## Transforming Operators <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex7.kt">`Ex7.kt`</a>
 
-You have already established the foundation of your RxKotlin skyscraper of skills and have added the first floor in learning about filtering operators. 
-Let's keep building upward. You will use transforming operator all the time to prep data coming from an observable. There are parallels between transforming operator in RxKotlin and 
-the kotlin standard library, such as map and flatMap.
+You have already established the foundation of your RxKotlin skyscraper of skills and have added the first floor in
+learning about filtering operators. Let's keep building upward. You will use transforming operator all the time to prep
+data coming from an observable. There are parallels between transforming operator in RxKotlin and the kotlin standard
+library, such as map and flatMap.
 
 ### Map
-RxKotlin's Map operator works just like kotlin's standard map, except it operates on an observable sequences instead of a normal collection. 
+
+RxKotlin's Map operator works just like kotlin's standard map, except it operates on an observable sequences instead of
+a normal collection.
 
 ![Map](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/map.png)
 
-In the marble diagram, map takes a lambda that multiples each element by 10. see the coding example in <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex7.kt">`Ex7.kt`</a> for getting more insights.<br>
+In the marble diagram, map takes a lambda that multiples each element by 10. see the coding example
+in <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex7.kt">`Ex7.kt`</a>
+for getting more insights.<br>
 
-Now let's venture into a something bit more elusive at first. Before I show the marble diagram let me just say that some of these operators have elicited more than their fair share of questions, and groans and moans from newcomers to RxKotlin. They may 
-seem complex at first, but they are very easy to understand... lets dive in... 
+Now let's venture into a something bit more elusive at first. Before I show the marble diagram let me just say that some
+of these operators have elicited more than their fair share of questions, and groans and moans from newcomers to
+RxKotlin. They may seem complex at first, but they are very easy to understand... lets dive in...
 
 ### FlatMap
 
 ![flatMap](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/flatmap.png)
 
-let's walk through the marble diagram. The easiest way to follow what's happening in this 
-marble diagram is to take each path from the source observable, the top line, all the way to the target 
-observable that will deliver elements to the subscriber, the bottom line. 
-the source observable is of type "O" that has a value property that itself is an observable 
-of type Int. It's value property's initial value is the number of the object ie. O1 -> 1 , O2 -> 2 and 
-O3 -> 3. Starting with O1, flatmap receives object and reaches into access it's value property 
-and multiply it by 10. It the projects the transformed elements from O1 into new Observable. The first one 
-below flatmap just for O1, and that Observable is flattened down to the target observable that will 
-deliver elements to the subscriber, the bottom line. <br>
+let's walk through the marble diagram. The easiest way to follow what's happening in this marble diagram is to take each
+path from the source observable, the top line, all the way to the target observable that will deliver elements to the
+subscriber, the bottom line. the source observable is of type "O" that has a value property that itself is an observable
+of type Int. It's value property's initial value is the number of the object ie. O1 -> 1 , O2 -> 2 and O3 -> 3. Starting
+with O1, flatmap receives object and reaches into access it's value property and multiply it by 10. It the projects the
+transformed elements from O1 into new Observable. The first one below flatmap just for O1, and that Observable is
+flattened down to the target observable that will deliver elements to the subscriber, the bottom line. <br>
 
 This is the general principle of flatMap<br>
 
@@ -743,49 +748,65 @@ This is the general principle of flatMap<br>
 
 ### SwitchMap
 
-It is similar to flatmap, but it only produces value from most recent Observable sequence. 
-SwitchMap is actually a combination of two operators, map and switch. Here is switch map's marble diagram.
+It is similar to flatmap, but it only produces value from most recent Observable sequence. SwitchMap is actually a
+combination of two operators, map and switch. Here is switch map's marble diagram.
 
 ![switchMap](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/switchMap.png)
 
-O1 is received by switchMap. It transforms its value to 10, projects it onto a new Observable for O1, and 
-flattens it down to the target observable, just like before. But, then switchMap receives O2 and it does its thing, switching to O2 observable 
-because it is now the latest... and so on... The result is that the target observable 
-only receives element from the latest observable.
+O1 is received by switchMap. It transforms its value to 10, projects it onto a new Observable for O1, and flattens it
+down to the target observable, just like before. But, then switchMap receives O2 and it does its thing, switching to O2
+observable because it is now the latest... and so on... The result is that the target observable only receives element
+from the latest observable.
 
 ## Combining Operators <a style = "color: white" href ="https://github.com/iamjosephmj/learn-rx/blob/master/src/main/kotlin/Ex8.kt">`Ex8.kt`</a>
 
-RxKotlin is about working with asynchronous sequences, which will often make order out of chaos. There is a lot you can 
+RxKotlin is about working with asynchronous sequences, which will often make order out of chaos. There is a lot you can
 accomplish by combining observables.
 
 ### StartWith()
 
 ![startWith](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/startWith.png)
 
-StartWith() prepends a sequence of values onto an observable that subscribes are 
-guaranteed to receive first before any other elements.
+StartWith() prepends a sequence of values onto an observable that subscribes are guaranteed to receive first before any
+other elements.
 
 ### combine()
 
 ![combine](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/concat.png)
 
-It turns out that the startWith is actually just a simplified variant of the contact operator. 
-Concat joins two observables together and combines their elements in the order the 
-observables are specified. 
+It turns out that the startWith is actually just a simplified variant of the contact operator. Concat joins two
+observables together and combines their elements in the order the observables are specified.
 
 ### combineWith()
 
 ![combineWith](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/concat.png)
 
-This is similar to concat, but the only difference is that concatWith waits for the first observable to complete to start 
-emitting the second one.
+This is similar to concat, but the only difference is that concatWith waits for the first observable to complete to
+start emitting the second one.
 
 ### merge()
 
 ![merge](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/merge.png)
 
-Merge will do as it says, interspersing elements from the combined observables as their 
-elements are emitted. Like with concat there is a merge with instance method.
+Merge will do as it says, interspersing elements from the combined observables as their elements are emitted. Like with
+concat there is a merge with instance method.
+
+### combineLatest()
+
+This is a static method on observable that will take the latest from each of the
+source observables whenever any source observable emits and pass those latest elements to
+a lambda for you to specify how to combine them.
+
+![combineLatest](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/combineLatest.png)
+
+This will emit the combined element everytime either source emits, So you might not get what 
+you had expected here. Another thing to be aware of is that the combineLatest will wait until all 
+source observables emit an initial value.
+
+** there are also certain variants of combine latest that will let you combine upto 8 source 
+observables. Now you might be wondering what the use case is... You can observe several text fields 
+top combine their value everytime text is emitted into one of the text field.
+
 
 
 
