@@ -55,6 +55,7 @@
     * [merge](#merge)
     * [combineLatest](#combineLatest)
     * [zip](#zip)
+    * [amb](#amb)
 
 ## Introduction
 
@@ -818,10 +819,14 @@ Zip will wait until all the source observables have produced an element at a cor
 
 ** this will be very much useful at the time of doing parallel api calls.
 
+### amb()
 
+This operator allows you to switch between observables.
 
+![amb](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/amb.png)
 
-
+It will subscribe to both observables and wait until either one emits an element, and then stay subscribed to that one and unsubscribe to 
+the other observable.
 
 
 

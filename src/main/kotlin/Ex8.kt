@@ -126,4 +126,24 @@ fun main(args: Array<String>) {
         subject1.onComplete()
         subject2.onComplete()
     }
+
+    exampleOf("amb") {
+        val disposable = CompositeDisposable()
+
+        val subject1 = PublishSubject.create<String>()
+        val subject2 = PublishSubject.create<String>()
+
+        disposable.add(
+
+            subject1.ambWith(subject2)
+                .subscribeBy {
+                    println(it)
+                }
+        )
+
+        subject1.onNext("one")
+        subject2.onNext("1")
+        subject1.onNext("two")
+        subject2.onNext("2")
+    }
 }
