@@ -101,4 +101,29 @@ fun main(args: Array<String>) {
         subject2.onNext(2)
 
     }
+
+    exampleOf("zip") {
+        val disposable = CompositeDisposable()
+
+        val subject1 = PublishSubject.create<String>()
+        val subject2 = PublishSubject.create<Int>()
+
+        disposable.add(
+
+            Observable.zip(subject1, subject2, { one, two ->
+                "$one and $two"
+            })
+                .subscribeBy {
+                    println(it)
+                }
+        )
+
+        subject1.onNext("one")
+        subject2.onNext(1)
+        subject1.onNext("two")
+        subject2.onNext(2)
+
+        subject1.onComplete()
+        subject2.onComplete()
+    }
 }

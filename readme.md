@@ -54,6 +54,7 @@
     * [combineWith](#combineWith)
     * [merge](#merge)
     * [combineLatest](#combineLatest)
+    * [zip](#zip)
 
 ## Introduction
 
@@ -806,6 +807,16 @@ source observables emit an initial value.
 ** there are also certain variants of combine latest that will let you combine upto 8 source 
 observables. Now you might be wondering what the use case is... You can observe several text fields 
 top combine their value everytime text is emitted into one of the text field.
+
+### zip()
+
+What if you only wanted to emit a new combined element when all source observables have emitted a new element? Zip it :)
+
+![zip](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/zip.png)
+
+Zip will wait until all the source observables have produced an element at curresponding index before emitting the combined element.
+
+** this will be very much useful at the time of doing parallel api calls.
 
 
 
