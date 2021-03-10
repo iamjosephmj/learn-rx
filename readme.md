@@ -814,7 +814,7 @@ What if you only wanted to emit a new combined element when all source observabl
 
 ![zip](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/zip.png)
 
-Zip will wait until all the source observables have produced an element at curresponding index before emitting the combined element.
+Zip will wait until all the source observables have produced an element at a corresponding index before emitting the combined element.
 
 ** this will be very much useful at the time of doing parallel api calls.
 
