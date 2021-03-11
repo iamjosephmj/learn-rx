@@ -9,9 +9,7 @@
 
 ## Heads up
 
-<p>Hey What's up everybody. Reactive programming has become almost a standard in the development of Android apps, as Kotlin already is. Combining the reactive paradigm with Kotlin development can help developers to keep a clean architecture in their apps in a easy way. 
-I had given a try to sketch out certain materials in this repo that can help you to get a better perspective of understanding on the basics of RxKotlin and a handful of its important operators.
-
+<p>Hey, What's up everybody. Reactive programming has become almost a standard in the development of Android apps, as Kotlin already is. Combining the reactive paradigm with Kotlin development can help developers to keep a clean architecture in their apps in an easy way. I had given a try to sketch out certain materials in this repo that can help you to get a better perspective of understanding the basics of RxKotlin and a handful of its important operators.</p>
 
 ## Table of contents
 
