@@ -9,7 +9,9 @@
 
 ## Heads up
 
-<p>Hey What's up everybody. I am Joseph James, In this project you can get a heads up to Rx-kotlin and use it in your Android Apps.
+<p>Hey What's up everybody. Reactive programming has become almost a standard in the development of Android apps, as Kotlin already is. Combining the reactive paradigm with Kotlin development can help developers to keep a clean architecture in their apps in a easy way. 
+I had given a try to sketch out certain materials in this repo that can help you to get a better perspective of understanding on the basics of RxKotlin and a handful of its important operators.
+
 
 ## Table of contents
 
