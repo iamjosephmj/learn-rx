@@ -146,4 +146,57 @@ fun main(args: Array<String>) {
         subject1.onNext("two")
         subject2.onNext("2")
     }
+
+    exampleOf("reduce") {
+        val subscription = CompositeDisposable()
+        // Only the final result will be printed, refer to the marble diagram.
+        subscription.add(
+            Observable.fromIterable(listOf(1, 2, 3, 4, 5))
+                .reduce { a, b ->
+                    a + b
+                }
+                .subscribeBy {
+                    println(it)
+                }
+        )
+    }
+
+
+    exampleOf("scan") {
+        val subscription = CompositeDisposable()
+        // Only the final result will be printed, refer to the marble diagram.
+        subscription.add(
+            Observable.fromIterable(listOf(1, 2, 3, 4, 5))
+                .scan { a, b ->
+                    a + b
+                }
+                .subscribeBy {
+                    println(it)
+                }
+        )
+    }
+
+    exampleOf("zip + scan") {
+        val subscription = CompositeDisposable()
+
+
+        val ob1 = Observable.fromIterable(listOf(1, 2, 3, 4, 5))
+        val ob2 = Observable.fromIterable(listOf("a", "b", "c", "d", "e"))
+
+        val ob3 = ob2.scan { t1, t2 ->
+            "$t1 + $t2"
+        }
+
+        subscription.add(
+            Observable.zip(ob1, ob2, ob3) { one, two, three ->
+                Triple(one, two, three)
+            }
+                .subscribeBy {
+                    println(it.toString())
+                }
+
+        )
+    }
+
+
 }

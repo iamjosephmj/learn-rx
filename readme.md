@@ -56,6 +56,8 @@
     * [combineLatest](#combineLatest)
     * [zip](#zip)
     * [amb](#amb)
+    * [reduce](#reduce)
+    * [scan](#scan)
 
 ## Introduction
 
@@ -827,6 +829,24 @@ This operator allows you to switch between observables.
 
 It will subscribe to both observables and wait until either one emits an element, and then stay subscribed to that one and unsubscribe to 
 the other observable.
+
+### reduce()
+
+Have you ever used reduce method on an iterable in kotlin? If so, you are going to feel right at home with 
+this combining operator. `reduce` in RxKotlin works very similarly. 
+
+![reduce](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/reduce.png)
+
+It allows you to combine an observable with itself using a lambda to determine how to do the combining. In this marble diagram, 
+you pass a lambda to determine how to perform accumulation. 
+
+### scan()
+
+This works similar to the reduce operator, but the only difference is that it passes through the intermediate results.
+<br>
+** you can use the combinations of multiple combining operators(see the zip + scan combining operator example in the `Ex8.kt`)
+
+
 
 
 
