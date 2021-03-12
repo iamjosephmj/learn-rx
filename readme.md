@@ -50,8 +50,8 @@
     * [Switch Map](#SwitchMap)
 * [Combining Operators](#Combining-operators-ex8kt)
     * [startWith](#startWith)
-    * [combine](#combine)
-    * [combineWith](#combineWith)
+    * [concat](#concat)
+    * [concatWith](#concatWith)
     * [merge](#merge)
     * [combineLatest](#combineLatest)
     * [zip](#zip)
@@ -774,16 +774,16 @@ accomplish by combining observables.
 StartWith() prepends a sequence of values onto an observable that subscribes are guaranteed to receive first before any
 other elements.
 
-### combine()
+### concat()
 
-![combine](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/concat.png)
+![concat](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/concat.png)
 
 It turns out that the startWith is actually just a simplified variant of the contact operator. Concat joins two
 observables together and combines their elements in the order the observables are specified.
 
-### combineWith()
+### concatWith()
 
-![combineWith](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/concat.png)
+![concatWith](https://github.com/iamjosephmj/learn-rx/blob/master/src/main/resources/concat.png)
 
 This is similar to concat, but the only difference is that concatWith waits for the first observable to complete to
 start emitting the second one.
